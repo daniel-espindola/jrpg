@@ -8,9 +8,9 @@ local Notification = new 'graphics.drawable' {
 }
 
 function Notification:init()
-  self.timer_max = 1
+  self.timer_max = 1.7
   self.timer = self.timer_max
-  self.font = self.font or font_loader:get("regular", 32)
+  self.font = self.font or font_loader:get("regular", 40)
   self.speed = 64
 end
 

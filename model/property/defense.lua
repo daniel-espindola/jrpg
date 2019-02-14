@@ -17,8 +17,8 @@ function Defense:onUpdate(dt, turn)
     character.hp = math.min(character.hp + self.regen, character.max_hp) -- regenera hp se for o caso
     character.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { character.avatar.position:get() },
-      color = { 1, .7, .7 },
-      text = self.regen
+      color = { .8, 1, .8 },
+      text = "+" .. self.regen
     })
   end
 end
