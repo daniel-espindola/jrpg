@@ -26,19 +26,29 @@ function Avatar:init()
     -- color = COLORS[self.side],
     position = new(Vec) {}
   }
+
   self.lifebar = new(BARS[self.side]) {
     color = { .2, .8, .2 }, value = .9 --cor das barras de hp
   }
+
+  self.energybar = new(BARS[self.side]) {
+    color = { .2, .2, .8 }, value = .3,
+    position = new(Vec) {-10,10}
+  }
+
   self.cursor = new 'graphics.polygon' {
     position = new(Vec) { 0, -64 },
     vertices = { -16, 0, 16, 0, 0, 20 },
     visible = false
   }
+
   self:add(new 'graphics.shadow' { position = new(Vec) { 0, 48 } })
   self:add(self.sprite)
   self:add(self.lifebar)
+  if self.side == 'right' then self:add(self.energybar) end
   self:add(self.cursor)
   self.counter = love.math.random() * 2 * math.pi
+
 end
 
 function Avatar:showCursor()
