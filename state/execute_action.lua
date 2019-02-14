@@ -29,6 +29,8 @@ function ExecuteAction:onEnter(battle, action)
       local item_spec = require ('database.entities.' .. battle.right.items[i].name)
       if params.item == item_spec.name then 
         itemID = battle.right.items[i].id
+        table.remove(params.items, 1)
+        print(#params.items)
         break
       end
     end
@@ -39,7 +41,7 @@ function ExecuteAction:onEnter(battle, action)
 
     if hp > 0 then text = text .. "HP +" .. hp end
     if atk > 0 then text = text .. "\nATK +" .. atk end
-    if def > 0 then text = text .. "\nHP +" .. def end
+    if def > 0 then text = text .. "\nDEF +" .. def end
 
     battle.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { params.target.position:get() },

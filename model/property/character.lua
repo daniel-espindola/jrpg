@@ -1,12 +1,15 @@
-
 local Character = new 'model.property' {
   typename = 'character',
 	max_hp = 0,
 	hp = 0,
+  speed = 0,
+  max_energy = 0,
+  energy = 0
 }
 
 function Character:init() 
-  self.hp = self.max_hp
+  self.hp = self.max_hp * 0.8
+  self.energy = self.max_energy
 end
 
 function Character:onUpdate(dt, turn, battle)

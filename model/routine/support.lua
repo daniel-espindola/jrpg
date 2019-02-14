@@ -15,11 +15,20 @@ function Support:play(effectID, targetID)
   target.hp = math.min(target.hp + heal, target.max_hp)
   target.power = target.power + atk
   
-  if target:as('defense') then -- caso o personagem tenha a propriedade defense
-    local defense = target:as('defense')
-    defense.def = math.min(defense.def + def, .99) -- def máxima é de 99% de redução
+  if def>0 then
+    if not target:as('defense') then
+      defense = new 'model.property.defense' {} 
+      self.stage:add(targetID, defense)
+    end
+    target = target:as('defense')
+    target.def = math.min(target.def + def, .99) -- def máxima é de 99% de redução
   end
 
+  --[[if target:as('defense') then -- caso o personagem tenha a propriedade defense
+    local defense = target:as('defense')
+    defense.def = math.min(defense.def + def, .99) -- def máxima é de 99% de redução
+  end--]]
+  print(effects[1],effects[2],effects[3])
   return effects
 end
 

@@ -7,7 +7,9 @@ return {
 
     character = { 
       max_hp = 100,
-      power = 20
+      power = 20,
+      speed = 30,
+      max_energy = 50,
     },
     defense = {
       def = .1, -- 10% de redução de dano físico

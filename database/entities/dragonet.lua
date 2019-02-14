@@ -7,7 +7,9 @@ return {
 
     character = { 
       max_hp = 150,
-      power = 100
+      power = 30,
+      speed = 20,
+      max_energy = 10,
     }
 
   }

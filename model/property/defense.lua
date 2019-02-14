@@ -11,14 +11,14 @@ function Defense:init()
 end
 
 function Defense:onUpdate(dt, turn)
-  if turn == 1 then
+  if (turn == 1 and self.regen > 0) then
     local character = self:as('character')
     
     character.hp = math.min(character.hp + self.regen, character.max_hp) -- regenera hp se for o caso
     character.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { character.avatar.position:get() },
-      color = { .8, 1, .8 },
-      text = "+" .. self.regen
+      color = { .6, 1, .6 },
+      text = "HP+" .. self.regen
     })
   end
 end

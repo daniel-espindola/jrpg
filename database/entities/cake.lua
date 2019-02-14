@@ -4,7 +4,7 @@ return {
    
   properties = {
     support = {
-      hp = 20,
+      hp = 0,
       attack = 10,
       defense = 10,
     }
