@@ -77,8 +77,6 @@ end
 -- onsuspend()
 
 function Battle:onResume(a)
-  print(a)
-
   if self.next_action then
     -- state/stack no init state/base
     self.stack:push('execute_action', self, self.next_action) --< POO

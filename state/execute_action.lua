@@ -30,7 +30,6 @@ function ExecuteAction:onEnter(battle, action)
       if params.item == item_spec.name then 
         itemID = battle.right.items[i].id
         table.remove(params.items, 1)
-        print(#params.items)
         break
       end
     end
