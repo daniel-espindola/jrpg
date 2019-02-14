@@ -8,7 +8,7 @@ local Character = new 'model.property' {
 }
 
 function Character:init() 
-  self.hp = self.max_hp * 0.8
+  self.hp = self.max_hp
   self.energy = self.max_energy
 end
 
@@ -23,7 +23,8 @@ function Character:onUpdate(dt, turn, battle)
     self.avatar:destroy()
     self.stage:remove(self.id)
   end
-  self.avatar.lifebar.value = math.max(self.hp/self.max_hp, 0) --atualiza a barra de hp, garante que nunca fique abaixo de 
+  self.avatar.lifebar.value = math.max(self.hp/self.max_hp, 0) --atualiza a barra de hp, garante que nunca fique abaixo de
+  self.avatar.energybar.value = math.max(self.energy/self.max_energy, 0) 
 end
 
 return Character

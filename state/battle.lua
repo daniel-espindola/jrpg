@@ -3,7 +3,7 @@ local Battle = new 'state.base' {
   current_char = 1, --<
   next_action = nil, --<
   delay = 0, --<
-
+  voltou = 0,
   --acesso a outros diretorios
   graphics = nil, --< 
   stage = new 'model.stage' {}, --<
@@ -76,14 +76,25 @@ end
 -- onleave()
 -- onsuspend()
 
-function Battle:onResume()
+function Battle:onResume(a)
+  print(a)
+
   if self.next_action then
     -- state/stack no init state/base
     self.stack:push('execute_action', self, self.next_action) --< POO
     self.next_action = nil
   else
     self:currentCharacter().avatar:hideCursor()
-    self.current_char = self.current_char % #self.right.characters + 1
+    if (self.current_char == #self.right.characters) then
+      self.current_party = 'left'
+      self.current_char = 0
+      self.stack:push('enemy_turn', self)
+    else
+      if(self.voltou == 0) then
+        self.current_char = self.current_char + 1
+      end
+      self.voltou = 0
+    end
   end
 end
 

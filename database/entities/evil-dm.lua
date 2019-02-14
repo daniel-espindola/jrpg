@@ -6,7 +6,7 @@ return {
   properties = { 
 
     character = { 
-      max_hp = 100,
+      max_hp = 250,
       power = 20,
       speed = 30,
       max_energy = 50,

@@ -7,8 +7,16 @@ function Attack:play(attackerID, targetID)
   local target = self.stage:find(targetID, 'character')
   local damage = attacker.power -- dano sem redução
   
-  local damage_reduction = target:as('defense') or 0
-  damage = math.floor(damage * (1 - damage_reduction.def)) -- reduz o dano baseado na def do alvo
+  local defense = target:as('defense')
+  if defense then
+    def = defense.def
+  else
+    def = 0
+  end
+
+  local damage_reduction = def
+  
+  damage = math.floor(damage * (1 - damage_reduction)) -- reduz o dano baseado na def do alvo
   
   target.hp = target.hp - damage
   return damage
